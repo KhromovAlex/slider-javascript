@@ -1,30 +1,39 @@
-# Webpack-build
-## Config for Webpack 4
-* HTML | PUG
-* CSS | SASS | SCSS
-* Babel | EsLint
-* Inline SVG
-    
-     *Example*:
-
-        from: <img markup-inline src="..." />
-                            
-        to: <svg markup-inline ...>...</svg>
-        
-    \* attribute markup-inline is required
-
+# Adaptive slider
 ## Commands
     npm run dev
     npm run start
     npm run build
 
-## File structure
-    dist/                # Build folder
-    src/                 # Source
-        app/                # JS files
-        fonts/              # Fonts
-        images/             # Images
-        static/             # Static files
-        styles/             # CSS | SCSS | SASS files
-        template/           # HTML | PUG files
-        index.js/           # Entry
+## Slider initialization
+    import Slider from './slider';
+
+    const slider = new Slider({
+            id = 'slider', // is required
+            width = '100%', // Default value
+            isControlButtons = false, // Default value
+            colorControls = '#fff', // Default value
+            interval = 5000, // Default value
+            isPagination = false, // Default value
+        });
+
+    slider.init();
+
+## HTML structure
+    <div class="slider" id="slider">
+        <ul class="slider__list-slides">
+            ...
+            <li class="slider__slide">
+                <a class="slider__link" ...>
+                    <figure class="slider__wrap-img">
+                        <img class="slider__img" ...>
+                        <figcaption class="slider__caption">
+                            Caption slide
+                        </figcaption>
+                    </figure>
+                </a>
+            </li>
+            ...
+        </ul>
+    </div>
+
+\* *Tags \<a>, \<figure> and \<figcaption> no required.*

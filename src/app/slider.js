@@ -26,7 +26,7 @@ export default class Slider {
         current.classList.remove('active');
         next.classList.add('active');
     }
-    
+
     nextSlide() {
         const currentSlide = this.getCurrentSlide();
         const nextSlide = currentSlide.nextElementSibling ? currentSlide.nextElementSibling : currentSlide.closest('ul').querySelector('li:first-child');
@@ -55,7 +55,7 @@ export default class Slider {
     }
 
     createPagination() {
-        if(!this.$slides.length) {
+        if (!this.$slides.length) {
             throw new Error('Список слайдов пуст!');
         }
 
@@ -71,7 +71,7 @@ export default class Slider {
 
             const paginationItem = document.createElement('li');
             paginationItem.append(paginationButton);
-            
+
             return paginationItem;
         });
 
@@ -80,35 +80,36 @@ export default class Slider {
     }
 
     createButtonsControl() {
-        const btnNext = document.createElement('button');
-        const btnPrevious = document.createElement('button');
-        btnNext.classList.add('slider__button');
-        btnPrevious.classList.add('slider__button');
+        const creacteButton = (name, content) => {
+            const button = document.createElement('button');
+            button.classList.add('slider__button');
+            button.dataset.button = name;
+            button.innerHTML = content;
+            button.style.color = this.colorControls;
+            return button;
+        };
 
-        btnNext.innerHTML = '&#11208;';
-        btnPrevious.innerHTML = '&#11207;';
-        btnNext.dataset.button = 'next';
-        btnPrevious.dataset.button = 'previous';
-        btnNext.style.color = this.colorControls;
-        btnPrevious.style.color = this.colorControls;
-        this.$sliderContainer.append(btnNext, btnPrevious);
-    
+        const btnNext = creacteButton('next', '&#11208;');
+        const btnPrevious = creacteButton('previous', '&#11207;');
+
+        this.$sliderContainer.append(btnPrevious, btnNext);
+
         btnPrevious.addEventListener('click', this.previousSlide.bind(this));
         btnNext.addEventListener('click', this.nextSlide.bind(this));
     }
 
     init() {
-        this.$sliderContainer.querySelector(`li:first-child`).classList.add('active');
+        this.$slides[0].classList.add('active');
 
         this.$sliderContainer.style.maxWidth = this.width;
 
         this.autoSlide();
 
-        if(this.isControlButtons) {
+        if (this.isControlButtons) {
             this.createButtonsControl();
         }
 
-        if(this.isPagination) {
+        if (this.isPagination) {
             this.createPagination();
         }
     }

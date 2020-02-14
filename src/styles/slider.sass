@@ -26,22 +26,48 @@
         opacity: 1
 
 .slider__link
-        display: block
+    display: block
+    text-decoration: none
+
+.slider__wrap-img
+    margin: 0
+    padding: 0
 
 .slider__img
     width: 100%
     height: auto
 
+.slider__caption
+    font-family: Arial, sans-serif
+    color: #fff
+    font-size: 1.3rem
+    font-weight: bold
+    text-align: center
+    position: absolute
+    top: 5%
+    left: 50%
+    transform: translate(-50%, -30px) scale(.45)
+    text-shadow: 1px 1px 5px rgba(#000, .7)
+    opacity: 0
+    transition: all .7s ease-in
+
+.active .slider__caption
+    transform: translate(-50%, 0) scale(1)
+    opacity: 1
+
 .slider__pagination
-        list-style-type: none
-        margin: 0
-        padding: 0
-        display: flex
-        position: absolute
-        bottom: 5%
-        left: 50%
-        transform: translate(-50%, 0)
-        z-index: 30
+    list-style-type: none
+    margin: 0
+    padding: 0
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    width: 100%
+    position: absolute
+    bottom: 5%
+    left: 50%
+    transform: translate(-50%, 0)
+    z-index: 30
 
 .slider__button
     background: transparent
@@ -53,6 +79,8 @@
     transition: opacity 5s
     z-index: 30
     padding: 0
+    text-shadow: 1px 1px 5px rgba(#000, .7)
+    padding: .5rem
     
     &[data-button], &[data-button]            
         position: absolute
