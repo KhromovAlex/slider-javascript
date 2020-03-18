@@ -1,6 +1,5 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const postcssPresetEnv = require('postcss-preset-env');
@@ -68,12 +67,6 @@ module.exports = {
             }
         }),
         new CleanWebpackPlugin(),
-        new CopyWebpackPlugin([
-            {
-                from: path.join(ROOT.from, 'static'),
-                to: ROOT.to
-            }
-        ]),
         new MiniCSSExtractPlugin({
             filename: filename('css')
         })
