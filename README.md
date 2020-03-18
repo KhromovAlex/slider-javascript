@@ -14,6 +14,8 @@
             colorControls = '#fff', // Default value
             interval = 5000, // Default value
             isPagination = false, // Default value
+            isSwipe = false, // Default value
+            isAutoSlide = false, // Default value
         });
 
     slider.init();
